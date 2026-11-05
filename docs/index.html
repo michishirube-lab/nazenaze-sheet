@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>みちしるべラボ｜なぜなぜ分析シート ご利用のご案内</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="不具合の聞き取りから、なぜなぜ分析の下書きを。金属加工の現場20年の経験から作った、町工場向けの無料ツールです。">
+<style>
+@page { size: A4; margin: 0; }
+:root{
+  --navy:#1f3a5f; --red:#e0533d; --ink:#1d2430; --sub:#5b6575; --line:#d9dee6;
+  --soft:#f4f6f9; --cream:#fff8e6; --green:#1f9d55; --yellow:#ffd84d;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{font-family:"BIZ UDPGothic","Yu Gothic UI","Yu Gothic","Meiryo",sans-serif;color:var(--ink);font-size:9.3pt;line-height:1.52;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;padding:9mm 12mm 8mm;position:relative;overflow:hidden;page-break-after:always;display:flex;flex-direction:column}
+.page:last-child{page-break-after:auto}
+
+/* ヘッダー */
+.head{display:flex;align-items:center;gap:9px;padding-bottom:7px;border-bottom:2.5px solid var(--navy)}
+.head svg{width:30px;height:30px}
+.brand-ja{font-size:14pt;font-weight:800;letter-spacing:.14em;color:var(--navy);line-height:1.15}
+.brand-en{font-size:6.5pt;letter-spacing:.38em;color:var(--sub);line-height:1.2}
+.head .doc{margin-left:auto;text-align:right;font-size:7.5pt;color:var(--sub);line-height:1.4}
+.head .doc b{display:inline-block;font-size:8pt;color:#fff;background:var(--navy);border-radius:999px;padding:1px 10px;letter-spacing:.08em}
+
+/* 表紙の見出し */
+.hero{margin:7px 0 6px;display:grid;grid-template-columns:1fr 56mm;gap:12px;align-items:center}
+.hero h1{font-size:18.5pt;line-height:1.25;color:var(--navy);letter-spacing:.02em}
+.hero h1 small{display:block;font-size:10pt;color:var(--red);letter-spacing:.2em;margin-bottom:3px;font-weight:800}
+.hero p.lead{margin-top:5px;font-size:10pt;line-height:1.6}
+.hero p.lead em{font-style:normal;background:linear-gradient(transparent 62%,#ffe58a 62%);font-weight:700}
+.hero .shot{border:1px solid var(--line);border-radius:6px;overflow:hidden;box-shadow:0 2px 8px rgba(31,58,95,.12)}
+.hero .shot img{display:block;width:100%}
+
+.points{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:6px}
+.point{background:var(--soft);border-radius:7px;padding:5px 8px;border-top:3px solid var(--navy)}
+.point b{display:block;font-size:9.8pt;color:var(--navy);margin-bottom:1px}
+.point span{font-size:8.3pt;color:var(--sub);line-height:1.45;display:block}
+
+h2{font-size:10.6pt;color:var(--navy);display:flex;align-items:center;gap:7px;margin:0 0 3px}
+h2 .no{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:var(--red);color:#fff;font-size:8.5pt}
+h2 .tag{margin-left:auto;font-size:7.5pt;font-weight:400;color:var(--sub)}
+
+.box{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin-bottom:6px}
+.box.navy{border:1.5px solid var(--navy)}
+.box.cream{background:var(--cream);border-color:#f0dca4}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+ul.dots{list-style:none}
+ul.dots li{position:relative;padding-left:12px;margin:1px 0}
+ul.dots li::before{content:"";position:absolute;left:2px;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--navy)}
+ul.dots.red li::before{background:var(--red)}
+.note{font-size:8pt;color:var(--sub)}
+b.red{color:var(--red)}
+
+/* 申し込みの流れ */
+.flow{display:grid;grid-template-columns:1fr 14px 1fr 14px 1fr;align-items:stretch;gap:0}
+.flow .st{background:#fff;border:1.5px solid var(--navy);border-radius:8px;padding:5px 8px}
+.flow .st .k{font-size:7.5pt;font-weight:800;color:var(--red);letter-spacing:.12em}
+.flow .st>b{display:block;font-size:9.2pt;color:var(--navy);margin:0 0 1px}
+.flow .st>span.d{font-size:8.5pt;line-height:1.45;display:block}
+.flow .ar{display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:11pt}
+.st2{border:1.5px solid var(--navy);border-radius:8px;padding:6px 9px}
+.st2 .k{font-size:7.5pt;font-weight:800;color:var(--red);letter-spacing:.12em;display:block}
+.st2>b{display:block;font-size:10pt;color:var(--navy);margin:0 0 3px}
+.st2 .gemlink img{width:19mm}
+.mail{display:inline-block;font-family:Consolas,"BIZ UDGothic",monospace;font-weight:700;color:var(--navy);background:var(--soft);border-radius:4px;padding:0 4px}
+
+/* 経営者の方へ */
+.exec{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:8.8pt}
+.exec dt{font-weight:800;color:var(--navy);white-space:nowrap}
+.exec dd{margin:0}
+
+/* 2ページ目 */
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.clip{overflow:hidden;border:1px solid var(--line);border-radius:5px}
+.clip img{border:none;border-radius:0;margin:0;width:100%;display:block}
+.step{border:1px solid var(--line);border-radius:8px;padding:6px 9px;display:flex;flex-direction:column}
+.step.wide{grid-column:1 / -1}
+.step h3{font-size:9.6pt;color:var(--navy);display:flex;align-items:center;gap:7px;margin-bottom:3px}
+.step h3 .n{font-size:7.5pt;font-weight:800;color:#fff;background:var(--navy);border-radius:4px;padding:1px 6px;letter-spacing:.1em}
+.step img{display:block;width:100%;border:1px solid var(--line);border-radius:5px;margin-top:5px}
+.alert{margin-top:5px;background:#fff1ee;border-left:3px solid var(--red);border-radius:4px;padding:4px 8px;font-size:8.4pt}
+.alert b{color:var(--red)}
+.inputs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:4px}
+.inputs div{background:var(--soft);border-radius:6px;padding:4px 6px;font-size:8.3pt;line-height:1.42}
+.inputs div>b{display:block;color:var(--navy);font-size:8.6pt}
+.gemlink{display:flex;gap:9px;align-items:center;margin-top:4px}
+.gemlink img{width:20mm;border:none;margin:0}
+.gemlink a{color:var(--navy);font-weight:700;word-break:break-all;font-size:8.4pt}
+.labels{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:8.2pt;margin-top:3px}
+.lb{display:inline-block;font-size:7.5pt;font-weight:700;border-radius:4px;padding:0 6px;margin-right:3px}
+.lb1{background:#e3eefc;color:#1d4f91}.lb2{background:#dff3e7;color:#1f7a44}.lb3{background:#fde4e1;color:#b3392b}.lb4{background:#fff0c7;color:#8a6200}
+.view{display:grid;grid-template-columns:1.05fr 1fr;gap:8px;align-items:start}
+.view img{margin-top:0}
+
+/* フッター */
+.foot{margin-top:auto;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;border-top:1.5px solid var(--navy);padding-top:6px}
+.foot .req{display:flex;gap:9px;align-items:center}
+.foot .req img{width:16mm}
+.foot .req b{color:var(--navy);font-size:9pt;display:block}
+.foot .req span{font-size:8.1pt;display:block;line-height:1.4}
+.foot .req a{color:var(--navy);font-weight:700}
+.foot .copy{font-size:7.2pt;color:var(--sub);text-align:right;line-height:1.5}
+.foot .copy b{color:var(--navy)}
+.pg{position:absolute;bottom:4mm;left:0;right:0;text-align:center;font-size:7pt;color:#9aa3b0}
+
+/* ===== Webで見るとき ===== */
+@media screen{
+  html,body{background:#eef1f5}
+  .topbar{position:sticky;top:0;z-index:5;background:#1f3a5f;color:#fff;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:8px 16px;font-size:13px}
+  .topbar a{color:#1f3a5f;background:#ffd84d;font-weight:800;text-decoration:none;border-radius:999px;padding:5px 14px;white-space:nowrap}
+  .page{height:auto;min-height:0;overflow:visible;margin:16px auto;box-shadow:0 2px 12px rgba(31,58,95,.15);border-radius:6px;max-width:210mm;width:auto;background:#fff}
+  .pg{display:none}
+}
+@media screen and (max-width:760px){
+  body{font-size:10.5pt}
+  .page{padding:16px;margin:0;border-radius:0;box-shadow:none}
+  .hero,.points,.two,.flow,.steps,.view,.inputs{grid-template-columns:1fr!important}
+  .step.wide{grid-column:auto}
+  .flow .ar{display:none}
+  .foot{grid-template-columns:1fr}
+  .foot .copy{text-align:left}
+  .hero h1{font-size:20pt}
+}
+@media print{.topbar{display:none}}
+</style>
+</head>
+<body>
+<div class="topbar"><span>みちしるべラボ｜なぜなぜ分析シート ご利用のご案内</span><a href="michishirube-nazenaze-guide.pdf" download>PDFで保存</a></div>
+
+<!-- ================= 1ページ目 ================= -->
+<section class="page">
+  <header class="head">
+    <svg viewBox="0 0 34 34" aria-hidden="true">
+      <rect x="15.5" y="4" width="3" height="28" rx="1.5" fill="#1f3a5f"/>
+      <path d="M6 7h17l5 4.5-5 4.5H6z" fill="#1f3a5f"/>
+      <path d="M28 17H11l-5 4.5 5 4.5h17z" fill="#e0533d"/>
+    </svg>
+    <div><div class="brand-ja">みちしるべラボ</div><div class="brand-en">MICHISHIRUBE LAB</div></div>
+    <div class="doc"><b>ご利用のご案内</b><br>2026年11月版</div>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1><small>なぜなぜ分析シート</small>不具合の聞き取りから、<br>なぜなぜ分析の下書きを。</h1>
+      <p class="lead">聞き取りの<em>録音を入れて送るだけ</em>で、4M（人・設備・材料・方法）ごとの「なぜなぜ」と原因候補、対策案、品証の確認ポイントまでを、決まった形の画面にまとめます。</p>
+    </div>
+    <div class="shot"><img src="img/sheet-top.png" alt="なぜなぜ分析シートの画面"></div>
+  </div>
+
+  <div class="points">
+    <div class="point"><b>無料・ご自由にどうぞ</b><span>お使いのGoogleアカウントの、無料のGeminiで動きます。費用はかかりません。</span></div>
+    <div class="point"><b>操作は3つだけ</b><span>開く → 録音を添付 → 送る。パソコンが苦手な方でも使えるようにしています。</span></div>
+    <div class="point"><b>人を責めない分析</b><span>「気が緩んだ」ではなく「何がそうさせたか」を書く決まりで作っています。</span></div>
+  </div>
+
+  <div class="box">
+    <h2>こんなときに使えます</h2>
+    <div class="two">
+      <ul class="dots">
+        <li><b>客先に出す再発防止書の下書きに</b>：なぜなぜ・原因候補・対策案がそろって出ます。</li>
+        <li><b>班長・品証の聞き取りの整理に</b>：録音を入れるだけで、4Mごとに整理されます。</li>
+      </ul>
+      <ul class="dots">
+        <li><b>朝礼や作業前の声かけに</b>：「作業前に伝える」「巡回で見る」ポイントも出ます。</li>
+        <li><b>「注意不足」で終わらせないために</b>：受け渡し・確かめ方など、仕組みの原因を探します。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box navy">
+    <h2><span class="no">1</span>使い方は2通り<span class="tag">共通版は無料／会社専用版も今は無料</span></h2>
+    <div class="two">
+      <div class="st2">
+        <span class="k">すぐ使える</span><b>共通版</b>
+        <div class="gemlink">
+          <img src="img/qr-gem-public.svg" alt="共通版のQRコード">
+          <div>QRコードかリンクを開くだけ。<b>登録はいりません</b>。お使いのGoogleアカウントで、そのまま使えます。<br><a href="https://gemini.google.com/gem/99da96ba54c1">gemini.google.com/gem/99da96ba54c1</a></div>
+        </div>
+      </div>
+      <div class="st2">
+        <span class="k">御社の分析をまとめたい方に</span><b>会社専用版 <span style="font-size:8pt;font-weight:400;color:var(--sub)">（現在は試行期間のため、無料でお作りしています）</span></b>
+        <p>画面に「〇〇社 専用」と出て、<b>御社の分析だけがまとまります</b>。月ごとの振り返りや、似た不具合の確認に使えます。</p>
+        <p style="margin-top:3px">お使いの<b>Gmailから</b>、会社名（仮の名前でも可）を書いて Nakamichi へお送りください。<br><span class="mail">709nakamichi@gmail.com</span></p>
+        <p class="note" style="margin-top:2px">本業と並行して個人で運営しているため、ご用意まで<b>1週間ほど</b>いただいています。準備ができしだい、こちらからご連絡します。お急ぎの場合は、その旨をお書きください。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="box cream">
+    <h2><span class="no">2</span>お使いいただく前に、3つだけ</h2>
+    <ul class="dots">
+      <li><b>共通版の利用で、費用をいただくことはありません。</b>安心して、好きなだけお使いください。</li>
+      <li><b>結果はAIの下書きです。</b>原因を決めるものではないので、現物・図面・記録で確かめてからお使いください。</li>
+      <li><b>分析の内容（文字だけ。録音は含みません）は、みちしるべラボのスプレッドシートに記録されます。</b>不具合の内容・原因・対策をためて、不具合の傾向や効いた対策の分析、ツールの改善に使います。社名や製品が分かる形で外に出したり、販売したりすることはありません（個々の会社が分からない形にまとめた傾向や事例を、情報発信に使うことがあります）。会社専用版のリンクは、社内の方だけでお使いください。</li>
+    </ul>
+    <p class="note" style="margin-top:3px">※ 録音は、お使いのGeminiに送られます。社外秘の扱いは、御社の決まりに合わせてください。画面では、人の名前・お客様名・品番は「作業者」「顧客」などに置き換えて表示します。</p>
+  </div>
+
+  <div class="box">
+    <h2><span class="no">3</span>作った人から</h2>
+    <p>金属加工の会社で約20年、切断・溶接・組立・機械加工の現場から、生産管理・品質保証・5S・安全衛生（第1種衛生管理者）まで経験してきた Nakamichi が、個人で作っています。</p>
+    <p style="margin-top:3px">これまでの現場の経験とAIの使い方を組み合わせて、中小の町工場のみなさんと一緒に、ものづくりを盛り上げていけたらと思い、<b>無料で公開しています</b>。「ここが使いにくい」「こんなことにも使いたい」という声をいただければ、空いた時間に少しずつ改良していきます。</p>
+  </div>
+
+  <footer class="foot">
+    <div class="req">
+      <img src="img/qr-form.svg" alt="ご要望フォームのQRコード">
+      <div><b>ご感想・ご要望をお聞かせください</b><span>「こんな機能がほしい」「使い方が分からない」「うまく動かない」など、ひとことでも大歓迎です。</span><span><a href="https://forms.gle/eU2egfgqNfbcTYBT9">https://forms.gle/eU2egfgqNfbcTYBT9</a></span></div>
+    </div>
+    <div class="copy"><b>© 2026 みちしるべラボ（michishirube lab）</b><br>仕組みや画面の複製・再配布は<br>ご遠慮ください。</div>
+  </footer>
+  <div class="pg">1 / 2</div>
+</section>
+
+<!-- ================= 2ページ目 ================= -->
+<section class="page">
+  <header class="head">
+    <svg viewBox="0 0 34 34" aria-hidden="true">
+      <rect x="15.5" y="4" width="3" height="28" rx="1.5" fill="#1f3a5f"/>
+      <path d="M6 7h17l5 4.5-5 4.5H6z" fill="#1f3a5f"/>
+      <path d="M28 17H11l-5 4.5 5 4.5h17z" fill="#e0533d"/>
+    </svg>
+    <div><div class="brand-ja">みちしるべラボ</div><div class="brand-en">MICHISHIRUBE LAB</div></div>
+    <div class="doc"><b>使い方</b><br>なぜなぜ分析シート</div>
+  </header>
+
+  <div class="steps" style="margin-top:9px">
+    <div class="step">
+      <h3><span class="n">STEP 1</span>「なぜなぜ分析」を開く</h3>
+      <p><b>共通版</b>は、下のリンク・QRコードから開きます。<b>会社専用版</b>は、Nakamichi からのご案内メール（Googleからの「共有されました」のお知らせ）にあるリンクから開きます。</p>
+      <div class="gemlink">
+        <img src="img/qr-gem-public.svg" alt="共通版のQRコード">
+        <div><a href="https://gemini.google.com/gem/99da96ba54c1">https://gemini.google.com/gem/99da96ba54c1</a><br><span class="note">※Googleアカウントでのログインが必要です。<br>※Geminiの一覧には出てこないため、<b>開いたらブックマーク（☆）</b>しておくと便利です。</span></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <h3><span class="n">STEP 2</span>「Canvas」と出るまで待つ</h3>
+      <p>開いてすぐは準備中です。入力欄の下に<b class="red">「Canvas」</b>と出てから次へ進みます（数秒〜30秒ほど）。</p>
+      <img src="img/g-canvas.png" alt="入力欄の下にCanvasと出ている様子">
+      <div class="alert"><b>ここが大事：</b>「Canvas」が出る前に送ると、分析の画面が作られません。</div>
+    </div>
+
+    <div class="step wide">
+      <h3><span class="n">STEP 3</span>聞き取りの内容を入れて、送る（↑ボタン）</h3>
+      <div class="view">
+        <div>
+          <p>左下の<b>「＋」</b>→<b>「ファイルをアップロード」</b>で、録音などを添付します。次のどれでも使えます。</p>
+          <div class="inputs">
+            <div><b>録音ファイル</b>スマホの録音など。<br>1件<strong>30分以内</strong>が目安。長いほど分析がぼやけます。</div>
+            <div><b>その場で話す</b>入力欄のマイクで話して文字にします。長い話には向かないので、要点を短く。</div>
+            <div><b>資料（PDFなど）</b>打ち合わせのメモや、お客様への報告書でも分析できます。</div>
+          </div>
+          <p class="note" style="margin-top:4px">💡 話の中で<b>「いつ起きたか（作った日）」「いつ連絡を受けたか」</b>も伝えてください。記録に残り、月ごとの振り返りに使えます。</p>
+        </div>
+        <div class="clip" style="height:33mm"><img src="img/g-attach.png" alt="＋メニューのファイルをアップロード"></div>
+      </div>
+    </div>
+
+    <div class="step wide">
+      <h3><span class="n">STEP 4</span>1〜3分で、分析の画面が出ます</h3>
+      <div class="view">
+        <div>
+          <div class="clip" style="height:33mm"><img src="img/g-result.png" alt="分析の画面が出たところ"></div>
+          <div class="alert"><b>画面が出ないとき：</b>「画面を作りました」と出ても、画面が見当たらないことがあります。そのときは、入力欄に<b>「Canvasで画面を作って」</b>と入れて送ってください。</div>
+        </div>
+        <div>
+          <p><b>① 4M</b>と<b>② 不具合</b>のボタンで、見る場所を切り替えます。各マスには印が付いています。</p>
+          <div class="labels">
+            <span><span class="lb lb1">説明あり</span>話の中に出てきたこと</span>
+            <span><span class="lb lb2">確認済み</span>図面・現物で確かめたこと</span>
+            <span><span class="lb lb3">仮説</span>AIが考えた候補（未確認）</span>
+            <span><span class="lb lb4">要確認</span>まだ分からないこと</span>
+          </div>
+          <p style="margin-top:4px">点線で囲まれた<b>「要見直し」</b>のマスは、AIが話していないことを書いたかもしれない所です。中身を確かめてから使ってください。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step wide">
+      <h3><span class="n">STEP 5</span>「ありそう」と思うマスに ✓ → まとめを表示 → 印刷</h3>
+      <div class="view" style="grid-template-columns:1fr 1fr">
+        <div>
+          <div class="clip" style="height:50mm"><img src="img/sheet-cells.png" alt="✓を付けたマス"></div>
+          <p class="note" style="margin-top:3px">マスを押すと ✓ が付きます。もう一度押すと外れます。</p>
+        </div>
+        <div>
+          <div class="clip" style="height:50mm"><img src="img/sheet-summary.png" alt="まとめの画面"></div>
+          <p class="note" style="margin-top:3px">下のボタンで、✓したマスをもとに、なぜなぜの整理・原因候補・対策案・品証の確認ポイントが表示されます。右上の<b>「印刷する」</b>で紙にもできます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <div class="req">
+      <img src="img/qr-form.svg" alt="ご要望フォームのQRコード">
+      <div><b>困ったとき・ご要望はこちら</b><span>画面が出ない、使い方が分からない、こんな機能がほしい、など。<br><a href="https://forms.gle/eU2egfgqNfbcTYBT9">https://forms.gle/eU2egfgqNfbcTYBT9</a></span></div>
+    </div>
+    <div class="copy"><b>© 2026 みちしるべラボ（michishirube lab）</b><br>Gemini は Google LLC のサービスです。<br>画面の内容は2026年11月時点のものです。</div>
+  </footer>
+  <div class="pg">2 / 2</div>
+</section>
+
+</body>
+</html>
