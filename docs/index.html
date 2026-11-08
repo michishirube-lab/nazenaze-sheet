@@ -125,6 +125,17 @@ b.red{color:var(--red)}
   .foot .copy{text-align:left}
   .hero h1{font-size:20pt}
 }
+/* 例文で試す（Webだけで表示） */
+.trybox{display:none}
+@media screen{
+  .trybox{display:block;background:#fff8e6;border:2px solid var(--yellow);border-radius:10px;padding:10px 14px;margin:2px 0 8px}
+  .trybox h2{font-size:12pt}
+  .trybox ol{margin:4px 0 6px 1.4em}
+  .trybox li{margin:2px 0}
+  .trybox a{color:var(--navy)}
+  .trybox pre{white-space:pre-wrap;background:#fff;border:1px dashed #d8c27a;border-radius:6px;padding:8px 10px;font-family:inherit;font-size:9.5pt;line-height:1.6}
+  .trybox button{margin:7px 0 4px;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:7px 18px;font-size:10pt;font-weight:800;cursor:pointer;font-family:inherit}
+}
 @media print{.topbar{display:none}}
 </style>
 </head>
@@ -155,6 +166,18 @@ b.red{color:var(--red)}
     <div class="point"><b>無料・ご自由にどうぞ</b><span>お使いのGoogleアカウントの、無料のGeminiで動きます。費用はかかりません。</span></div>
     <div class="point"><b>操作は3つだけ</b><span>開く → 録音を添付 → 送る。パソコンが苦手な方でも使えるようにしています。</span></div>
     <div class="point"><b>人を責めない分析</b><span>「気が緩んだ」ではなく「何がそうさせたか」を書く決まりで作っています。</span></div>
+  </div>
+
+  <div class="trybox">
+    <h2>録音がなくても、1分で試せます</h2>
+    <ol>
+      <li>下の例文を<b>コピー</b>する</li>
+      <li><a href="https://gemini.google.com/gem/99da96ba54c1" target="_blank" rel="noopener"><b>なぜなぜ分析（共通版）</b></a>を開く</li>
+      <li>入力欄の下に「Canvas」と出たら、例文を貼り付けて<b>送る</b></li>
+    </ol>
+    <pre id="sample">（例文・架空の話です）班長の話：11月4日に溶接した架台フレームで、M8の取付穴が図面より5ミリずれていた。同じ日に作った6台とも同じ。組立で相手部品のボルトが入らず、初めて分かった。墨付けは配属3か月の作業者がやった。前の版の図面を見ていた、と言っていた。</pre>
+    <button type="button" id="copybtn" onclick="copySample()">例文をコピーする</button>
+    <p class="note">ご自分の現場の話でも、そのまま試せます。録音でも、メモでも、音声入力の文でも大丈夫です。</p>
   </div>
 
   <div class="box">
@@ -306,5 +329,28 @@ b.red{color:var(--red)}
   <div class="pg">2 / 2</div>
 </section>
 
+<script>
+function copySample() {
+  const pre = document.getElementById('sample');
+  const btn = document.getElementById('copybtn');
+  const show = msg => { btn.textContent = msg; setTimeout(() => { btn.textContent = '例文をコピーする'; }, 2500); };
+  // クリップボードが使えない環境でも、文を選んだ状態にしてコピーを試す
+  const fallback = () => {
+    const r = document.createRange();
+    r.selectNodeContents(pre);
+    const s = getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) {}
+    show(ok ? 'コピーしました' : '文を選びました。コピーしてください');
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(pre.innerText).then(() => show('コピーしました'), fallback);
+  } else {
+    fallback();
+  }
+}
+</script>
 </body>
 </html>
